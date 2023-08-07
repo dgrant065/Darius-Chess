@@ -8,9 +8,10 @@ let board, turn, winner
 
   /*----- cached elements  -----*/
 const playAgainButton = document.querySelector('button')
+const gameBoard = document.querySelector("#board")
 
   /*----- event listeners -----*/
-
+playAgainButton.addEventListener('click', init);
 
   /*----- functions -----*/
   init();
