@@ -4,10 +4,10 @@
 
 
   /*----- state variables -----*/
-
+let board, turn, winner
 
   /*----- cached elements  -----*/
-
+const playAgainButton = document.querySelector('button')
 
   /*----- event listeners -----*/
 
