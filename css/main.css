@@ -18,16 +18,17 @@ html {
     
   }
   
-  #board { 
+  #chessboard { 
     display: grid;
     grid-template-columns: repeat(8, 8vmin);
     grid-template-rows: repeat(8, 8vmin);
     margin-top: -4vmin;
+    border: 0.1vmin solid black;
     
   }
 
-  #board > div {
-    border: 0.1vmin solid black;
+  #chessboard > div {
+    border: 0.1vmin solid white;
     
   }
 
@@ -36,7 +37,7 @@ html {
     background-color: darkgray;
   }
 
-  #board > div:hover {
+  #chessboard > div:hover {
     color: grey;
     background-color: darkgrey;
   }

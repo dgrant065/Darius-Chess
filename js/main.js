@@ -7,6 +7,7 @@ const PLAYERS = {
   '-1': 'Black',
 }
 
+
   /*----- state variables -----*/
 let board, turn, winner
 
@@ -22,41 +23,59 @@ playAgainBtn.addEventListener('click', init);
   init();
 
   function init() {
-    board = [
-        [0, 0, 0, 0, 0, 0 ,0, 0],
-        [0, 0, 0, 0, 0, 0 ,0, 0],
-        [0, 0, 0, 0, 0, 0 ,0, 0],
-        [0, 0, 0, 0, 0, 0 ,0, 0],
-        [0, 0, 0, 0, 0, 0 ,0, 0],
-        [0, 0, 0, 0, 0, 0 ,0, 0],
-        [0, 0, 0, 0, 0, 0 ,0, 0],
-        [0, 0, 0, 0, 0, 0 ,0, 0],
-    ];
+
+    // board = [
+    //     // [0, 0, 0, 0, 0, 0 ,0, 0],
+    //     // [0, 0, 0, 0, 0, 0 ,0, 0],
+    //     // [0, 0, 0, 0, 0, 0 ,0, 0],
+    //     // [0, 0, 0, 0, 0, 0 ,0, 0],
+    //     // [0, 0, 0, 0, 0, 0 ,0, 0],
+    //     // [0, 0, 0, 0, 0, 0 ,0, 0],
+    //     // [0, 0, 0, 0, 0, 0 ,0, 0],
+    //     // [0, 0, 0, 0, 0, 0 ,0, 0]
+    // ];
     turn = 1;
     winner = null;
     render();
   }
 
+
 function render() {
   renderBoard();
   renderMessage();
+  renderControls();
+}
 
+function createBoard() {
+const chessboard = document.getElementById('chessboard'); 
+  for (let i = 0; i < 8; i++) {
+    for (let j = 0; j < 8; j++) {
+      const chessSquare = document.createElement('div');
+      chessSquare.className = 'chess-square';
+      chessSquare.style.display = 'flex'
+      if ((i + j) % 2 == 0) {
+        chessSquare.style.backgroundColor = '#000'
+        
+      }
+      chessboard.appendChild(chessSquare);
+    }
+  }
 }
 
 function renderBoard() {
-  board.forEach(function(colArr, colIdx) {
-    colArr.forEach(function(cell, rowIdx) {
-      const cellId = `c${colIdx}r${rowIdx}`;
-      const cellEl = document.getElementById(cellId);
-      cellEl.innerText = PLAYERS[cell];
-    });
-  });
+
 }
 
 function renderMessage() {
-  
+  // if (winner === 'T') {
+  //   messageEl.innerText = "It's a Draw!!!";
+  // } else if (winner) {
+  //   messageEl.innerHTML = `${PLAYERS[winner]}Wins!`;
+  // } else {
+  //   messageEl.innerHTML = `${PLAYERS[turn]}'s Turn`;
+  // }
 }
 
-
-
-
+function renderControls() {
+  playAgainBtn.style.visibility = winner ? 'visible' : 'hidden';
+}
