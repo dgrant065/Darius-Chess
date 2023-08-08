@@ -30,3 +30,13 @@ html {
     border: 0.1vmin solid black;
     
   }
+
+  button:hover {
+    color: grey;
+    background-color: darkgray;
+  }
+
+  #board > div:hover {
+    color: grey;
+    background-color: darkgrey;
+  }
