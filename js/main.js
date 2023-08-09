@@ -22,7 +22,7 @@ const PLAYERS = {
 // const wPawn = '<div class="piece" id="pawn">"https://cdn.discordapp.com/attachments/485962663080230912/1138247765743390830/Chess_plt60.png"</div>'
 
   /*----- state variables -----*/
-let board, turn, winner, blackPieces, whitePieces
+let board, turn, winner, blackPieces, whitePieces, boardArr
 
 // classes
 
@@ -36,35 +36,53 @@ const boardEls = [...document.querySelectorAll('#board > div')]
 playAgainBtn.addEventListener('click', init);
 
   /*----- functions -----*/
-init();
-
-function init() {
-
-  board = [
-    [0, 0, 0, 0, 0, 0 ,0, 0],
-    [0, 0, 0, 0, 0, 0 ,0, 0],
-    [0, 0, 0, 0, 0, 0 ,0, 0],
-    [0, 0, 0, 0, 0, 0 ,0, 0],
-    [0, 0, 0, 0, 0, 0 ,0, 0],
-    [0, 0, 0, 0, 0, 0 ,0, 0],
-    [0, 0, 0, 0, 0, 0 ,0, 0],
-    [0, 0, 0, 0, 0, 0 ,0, 0]
-  ];
-  buildPieces()
-  turn = 1;
+  
+  function init() {
+    
+    boardArr = [
+      [],[],[],[],[],[],[],[],
+      
+    ]
+    console.log(boardArr)
+    boardTemplate = [
+      ['r', 'kn', 'b', 'q', 'k', 'b', 'kn', 'r'],
+      ['p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'],
+      [null, null, null, null, null, null, null, null],
+      [null, null, null, null, null, null, null, null],
+      [null, null, null, null, null, null, null, null],
+      [null, null, null, null, null, null, null, null],
+      ['p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'],
+      ['r', 'kn', 'b', 'k', 'q', 'b', 'kn', 'r'],
+    ];
+    for (let i = 0; i < boardTemplate.length; i++) {
+      for (let j = 0; j < boardTemplate[i].length; j++) {
+        if (boardTemplate [i][j] === 'r') boardArr[i].push(new Piece(i < 2 ? 'black': 'white')) 
+        if (boardTemplate[i][j] === 'kn') boardArr[i].push(new Piece(i < 2 ? 'black': 'white'))
+        if (boardTemplate[i][j] === 'b')  boardArr[i].push(new Piece(i < 2 ? 'black': 'white'))
+        if (boardTemplate[i][j] === 'k')  boardArr[i].push(new Piece(i < 2 ? 'black': 'white'))
+        if (boardTemplate[i][j] === 'q')  boardArr[i].push(new Piece(i < 2 ? 'black': 'white'))
+        if (boardTemplate[i][j] === 'p')  boardArr[i].push(new Piece(i < 2 ? 'black': 'white'))
+        if (boardTemplate[i][j] === null) boardArr[i].push(null)
+      }
+    } console.log(boardArr)          
+    // buildPieces()
+    turn = 1;
   winner = null;
-  render();
+  // render();
 }
 
-
-function render() {
-  renderBoard();
-  renderMessage();
-  renderControls();
+function buildPieces() {
+  console.log(buildPieces)
 }
+
+// renderBoard();
+// renderMessage();
+// renderControls();
+
+
 
 function createBoard() {
-const chessboard = document.getElementById('chessboard'); 
+  const chessboard = document.getElementById('chessboard'); 
   for (let i = 0; i < 8; i++) {
     for (let j = 0; j < 8; j++) {
       const chessSquare = document.createElement('div');
@@ -80,69 +98,67 @@ const chessboard = document.getElementById('chessboard');
 }
 
 function renderBoard() {
-
+  
 }
 
 function renderMessage() {
   // if (winner === 'T') {
-  //   messageEl.innerText = "It's a Draw!!!";
-  // } else if (winner) {
-  //   messageEl.innerHTML = `${PLAYERS[winner]}Wins!`;
-  // } else {
-  //   messageEl.innerHTML = `${PLAYERS[turn]}'s Turn`;
+    //   messageEl.innerText = "It's a Draw!!!";
+    // } else if (winner) {
+      //   messageEl.innerHTML = `${PLAYERS[winner]}Wins!`;
+      // } else {
+        //   messageEl.innerHTML = `${PLAYERS[turn]}'s Turn`;
+        // }
+      }
+      
+      function renderControls() {
+        playAgainBtn.style.visibility = winner ? 'visible' : 'hidden';
+      }
+      
+      function buildPieces() {
+        
+      }
+      
+      class Piece {
+        constructor(color) {
+          this.color = color;
+        }
+      }
+      
+      // class Pawn extends Piece {
+        //   move()
+        // }
+        
+        // class King extends Piece {
+          //   move()
+          // }
+          
+          // class Queen extends Piece {
+//   move()
+// }
+
+// class Rook extends Piece {
+  //   move()
   // }
-}
-
-function renderControls() {
-  playAgainBtn.style.visibility = winner ? 'visible' : 'hidden';
-}
-
-function buildPieces() {
-
-}
-
-class Piece {
-  constructor(column, row, color) {
-    this.column = column;
-    this.row = row;
-    this.color = color;
-  }
-}
-
-class Pawn extends Piece () {
-  move()
+  
+  // class Bishop extends Piece {
+    //   move()
+    // }
     
-}
-
-class King extends Piece() {
-  move()
-}
-
-class Queen extends Piece() {
-  move()
-}
-
-class Rook extends Piece() {
-  move()
-}
-
-class Bishop extends Piece() {
-  move()
-}
-
-class Knight extends Piece() {
-  move()
-}
-
-
-
-
-
-
-
-
-
-
-
+    // class Knight extends Piece {
+      //   move()
+      // }
+      init();
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
 
 
